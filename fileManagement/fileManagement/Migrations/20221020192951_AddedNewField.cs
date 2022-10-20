@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace fileManagement.Migrations
 {
-    public partial class init : Migration
+    public partial class AddedNewField : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,6 +17,7 @@ namespace fileManagement.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FileName = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false),
                     FileUrl = table.Column<string>(type: "nvarchar(300)", maxLength: 300, nullable: false),
+                    ContentType = table.Column<string>(type: "nvarchar(80)", maxLength: 80, nullable: false),
                     CreationTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     DeletionTime = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: true)

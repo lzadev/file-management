@@ -19,6 +19,13 @@ namespace fileManagement.Repository
             return model;
         }
 
+        public async Task<List<FileUploaded>> Create(List<FileUploaded> model)
+        {
+            await context.FileUploaded.AddRangeAsync(model);
+            await context.SaveChangesAsync();
+            return model;
+        }
+
         public async Task<bool> Delete(FileUploaded model)
         {
             context.FileUploaded.Update(model);
@@ -32,7 +39,7 @@ namespace fileManagement.Repository
 
         public Task<IEnumerable<FileUploaded>> GetAll(Func<FileUploaded, bool> func)
         {
-            return Task.FromResult(Task.Run(()=>context.FileUploaded.Where(func)).Result);
+            return Task.FromResult(Task.Run(() => context.FileUploaded.Where(func)).Result);
         }
 
         public async Task<FileUploaded> GetById(int id)

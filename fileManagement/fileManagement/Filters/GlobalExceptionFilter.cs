@@ -22,7 +22,7 @@ namespace fileManagement.Filters
                 return;
             }
 
-            if (exceptionType == typeof(BadRequestException))
+            if (exceptionType == typeof(BadRequestException) || exceptionType == typeof(InvalidFileException))
             {
                 context.Result = new ObjectResult(GetResponseError("BadRequest", context.Exception.Message, exceptionType));
                 context.HttpContext.Response.StatusCode = (int)StatusCodes.Status400BadRequest;

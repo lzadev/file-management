@@ -12,8 +12,8 @@ using fileManagement.Context;
 namespace fileManagement.Migrations
 {
     [DbContext(typeof(FileUploadedContext))]
-    [Migration("20221020033243_init")]
-    partial class init
+    [Migration("20221020192951_AddedNewField")]
+    partial class AddedNewField
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,11 @@ namespace fileManagement.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("ContentType")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("nvarchar(80)");
 
                     b.Property<DateTimeOffset>("CreationTime")
                         .HasColumnType("datetimeoffset");
